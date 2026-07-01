@@ -65,11 +65,18 @@
         }
 
         /* -----------------------------------------
-           TRUCCO MAGICO: Nasconde i banner di Google Translate
+           TRUCCO MAGICO 2.0: Nasconde totalmente i banner di Google Translate
            per mantenere il design pulito e lussuoso
            ----------------------------------------- */
-        .goog-te-banner-frame.skiptranslate { display: none !important; }
-        body { top: 0px !important; }
+        .goog-te-banner-frame,
+        .goog-te-banner-frame.skiptranslate,
+        .VIpgJd-ZVi9od-ORHb-OEVmcd,
+        .skiptranslate > iframe { display: none !important; }
+        
+        /* Previene che Google abbassi l'intero sito coprendo il menù */
+        body { top: 0px !important; position: static !important; margin-top: 0px !important; }
+        html { top: 0px !important; height: auto !important; }
+        
         #goog-gt-tt { display: none !important; top: 0px !important; }
         .goog-tooltip { display: none !important; }
         .goog-tooltip:hover { display: none !important; }
