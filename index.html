@@ -120,7 +120,7 @@
                     <!-- Language Selector con Traduzione Vera -->
                     <div class="relative group ml-2 mr-4 border-l border-white/20 pl-4" translate="no">
                         <button class="flex items-center text-gray-300 hover:text-white text-xs xl:text-sm font-bold uppercase tracking-wider focus:outline-none">
-                            <i class="fa-solid fa-globe mr-1 text-gold"></i> EN <i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i>
+                            <i class="fa-solid fa-globe mr-1 text-gold"></i> <span id="current-lang-label">EN</span> <i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i>
                         </button>
                         <!-- Dropdown Lingue -->
                         <div class="absolute right-0 mt-4 w-32 bg-dark border border-white/10 rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 overflow-hidden">
@@ -388,7 +388,7 @@
                                 <li><i class="fa-solid fa-check text-darker mr-2"></i> Great Benefits</li>
                             </ul>
                             
-                            <a href="https://forms.gle/G6HVBowuq9QrfpAQA" target="_blank" class="inline-block bg-darker text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-dark transition-colors shadow-xl">
+                            <a id="apply-form-link" href="https://forms.gle/G6HVBowuq9QrfpAQA" target="_blank" class="inline-block bg-darker text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-dark transition-colors shadow-xl">
                                 Apply Now
                             </a>
                             <p class="mt-3 text-xs opacity-70 italic">*Takes 2 minutes via our quick form.</p>
@@ -575,6 +575,35 @@
             window.location.reload();
         }
 
+        // NUOVO: Funzione per aggiornare UI e Link in base alla lingua
+        function updateLanguageUI() {
+            const match = document.cookie.match(/(?:^|;)\s*googtrans=([^;]*)/);
+            let currentLang = 'en';
+            if (match && match[1]) {
+                const parts = match[1].split('/');
+                if (parts.length > 2) currentLang = parts[2];
+            }
+            
+            // 1. Aggiorna l'etichetta EN / AR / RU in alto
+            const langLabel = document.getElementById('current-lang-label');
+            if (langLabel) langLabel.innerText = currentLang.toUpperCase();
+
+            // 2. Aggiorna il link del form Google
+            const formLink = document.getElementById('apply-form-link');
+            if (formLink) {
+                if (currentLang === 'ar') {
+                    // Link Form Arabo (da sostituire quando lo crei)
+                    formLink.href = "https://forms.gle/G6HVBowuq9QrfpAQA"; 
+                } else if (currentLang === 'ru') {
+                    // Link Form Russo (da sostituire quando lo crei)
+                    formLink.href = "https://forms.gle/G6HVBowuq9QrfpAQA";
+                } else {
+                    // Link Form Inglese
+                    formLink.href = "https://forms.gle/G6HVBowuq9QrfpAQA";
+                }
+            }
+        }
+
         // Gestione della navigazione tra le pagine
         function navigate(event, pageId) {
             event.preventDefault();
@@ -619,6 +648,8 @@
 
         // Trigger del Popup Promozionale all'apertura del sito
         window.addEventListener('load', function() {
+            updateLanguageUI(); // Lancia il controllo lingua all'avvio!
+
             setTimeout(() => {
                 const popup = document.getElementById('promo-popup');
                 const content = document.getElementById('promo-content');
