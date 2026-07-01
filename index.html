@@ -63,16 +63,39 @@
             from { transform: scale(1); }
             to { transform: scale(1.1); }
         }
+
+        /* -----------------------------------------
+           TRUCCO MAGICO: Nasconde i banner di Google Translate
+           per mantenere il design pulito e lussuoso
+           ----------------------------------------- */
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
+        #goog-gt-tt { display: none !important; top: 0px !important; }
+        .goog-tooltip { display: none !important; }
+        .goog-tooltip:hover { display: none !important; }
+        .goog-text-highlight { background-color: transparent !important; border: none !important; box-shadow: none !important; }
     </style>
+
+    <!-- Script Inizializzazione Google Translate -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </head>
 <body class="antialiased selection:bg-gold selection:text-white">
+
+    <!-- Contenitore invisibile per Google Translate -->
+    <div id="google_translate_element" style="display:none;"></div>
 
     <nav class="fixed w-full z-40 bg-darker/90 backdrop-blur-md border-b border-white/10 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="#" onclick="navigate(event, 'home')" class="font-serif text-2xl font-bold tracking-widest text-white uppercase">
+                    <a href="#" onclick="navigate(event, 'home')" class="font-serif text-2xl font-bold tracking-widest text-white uppercase" translate="no">
                         Pinky'z <span class="text-gold">Salon</span>
                     </a>
                 </div>
@@ -87,16 +110,16 @@
                     <a href="#" onclick="navigate(event, 'contact')" class="text-gray-300 hover:text-gold transition-colors text-xs xl:text-sm uppercase tracking-wider font-semibold">Contact</a>
                     <a href="#" onclick="navigate(event, 'booking')" class="text-gray-300 hover:text-gold transition-colors text-xs xl:text-sm uppercase tracking-wider font-semibold">Booking</a>
                     
-                    <!-- Language Selector (Nuova Feature) -->
-                    <div class="relative group ml-2 mr-4 border-l border-white/20 pl-4">
+                    <!-- Language Selector con Traduzione Vera -->
+                    <div class="relative group ml-2 mr-4 border-l border-white/20 pl-4" translate="no">
                         <button class="flex items-center text-gray-300 hover:text-white text-xs xl:text-sm font-bold uppercase tracking-wider focus:outline-none">
                             <i class="fa-solid fa-globe mr-1 text-gold"></i> EN <i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i>
                         </button>
                         <!-- Dropdown Lingue -->
                         <div class="absolute right-0 mt-4 w-32 bg-dark border border-white/10 rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 overflow-hidden">
-                            <a href="#" class="block px-4 py-3 text-sm text-gray-300 hover:text-darker hover:bg-gold transition-colors"><span class="mr-2">🇬🇧</span> English</a>
-                            <a href="#" class="block px-4 py-3 text-sm text-gray-300 hover:text-darker hover:bg-gold transition-colors"><span class="mr-2">🇦🇪</span> العربية</a>
-                            <a href="#" class="block px-4 py-3 text-sm text-gray-300 hover:text-darker hover:bg-gold transition-colors"><span class="mr-2">🇷🇺</span> Русский</a>
+                            <a href="#" onclick="setLanguage('en'); return false;" class="block px-4 py-3 text-sm text-gray-300 hover:text-darker hover:bg-gold transition-colors"><span class="mr-2">🇬🇧</span> English</a>
+                            <a href="#" onclick="setLanguage('ar'); return false;" class="block px-4 py-3 text-sm text-gray-300 hover:text-darker hover:bg-gold transition-colors"><span class="mr-2">🇦🇪</span> العربية</a>
+                            <a href="#" onclick="setLanguage('ru'); return false;" class="block px-4 py-3 text-sm text-gray-300 hover:text-darker hover:bg-gold transition-colors"><span class="mr-2">🇷🇺</span> Русский</a>
                         </div>
                     </div>
 
@@ -107,7 +130,7 @@
 
                 <!-- Mobile Menu Button & Language (Hamburger) -->
                 <div class="lg:hidden flex items-center space-x-4">
-                    <div class="relative group">
+                    <div class="relative group" translate="no">
                         <button class="flex items-center text-gray-300 hover:text-white text-sm font-bold focus:outline-none">
                             <i class="fa-solid fa-globe text-gold"></i>
                         </button>
@@ -121,13 +144,13 @@
 
         <div id="mobile-menu" class="hidden lg:hidden bg-dark border-b border-white/10 absolute w-full max-h-[80vh] overflow-y-auto">
             <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col items-center">
-                <!-- Mobile Language Selector -->
-                <div class="flex justify-center space-x-4 mb-4 pb-4 border-b border-white/10 w-full pt-4">
-                    <a href="#" class="text-gold font-bold">EN</a>
+                <!-- Mobile Language Selector con Traduzione Vera -->
+                <div class="flex justify-center space-x-4 mb-4 pb-4 border-b border-white/10 w-full pt-4" translate="no">
+                    <a href="#" onclick="setLanguage('en'); return false;" class="text-gold font-bold">EN</a>
                     <span class="text-gray-600">|</span>
-                    <a href="#" class="text-gray-400 hover:text-white">AR</a>
+                    <a href="#" onclick="setLanguage('ar'); return false;" class="text-gray-400 hover:text-white">AR</a>
                     <span class="text-gray-600">|</span>
-                    <a href="#" class="text-gray-400 hover:text-white">RU</a>
+                    <a href="#" onclick="setLanguage('ru'); return false;" class="text-gray-400 hover:text-white">RU</a>
                 </div>
                 
                 <a href="#" onclick="navigate(event, 'home')" class="block px-3 py-3 text-base uppercase tracking-widest font-semibold text-gray-300 hover:text-gold">Home</a>
@@ -172,7 +195,6 @@
                     </div>
                 </div>
             </section>
-            <!-- Nota: La promo è stata spostata nel Popup Modale -->
         </div>
 
         <div id="page-services" class="page-section hidden pt-20">
@@ -288,7 +310,6 @@
                         <p class="text-gold font-sans uppercase tracking-[0.2em] mb-4 text-sm font-semibold">Real Results</p>
                         <h2 class="font-serif text-4xl md:text-5xl font-bold text-white">Our Work Gallery</h2>
                         <div class="w-24 h-1 bg-blush mx-auto mt-6"></div>
-                         <!-- Traduzione Inglese -->
                          <p class="text-gray-400 mt-6 max-w-2xl mx-auto italic">(Placeholder images to showcase work examples. These will be replaced with actual salon photos.)</p>
                     </div>
 
@@ -360,7 +381,6 @@
                                 <li><i class="fa-solid fa-check text-darker mr-2"></i> Great Benefits</li>
                             </ul>
                             
-                            <!-- Link Google Forms Corretto -->
                             <a href="https://forms.gle/G6HVBowuq9QrfpAQA" target="_blank" class="inline-block bg-darker text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-dark transition-colors shadow-xl">
                                 Apply Now
                             </a>
@@ -525,7 +545,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-darker py-8 border-t border-white/10">
+    <footer class="bg-darker py-8 border-t border-white/10" translate="no">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <p class="text-gray-500 text-sm mb-4 md:mb-0">
@@ -541,6 +561,13 @@
 
     <!-- JavaScript -->
     <script>
+        // TRADUZIONE: Funzione per impostare la lingua via Google Translate
+        function setLanguage(lang) {
+            document.cookie = "googtrans=/en/" + lang + "; path=/";
+            document.cookie = "googtrans=/en/" + lang + "; domain=." + document.domain + "; path=/";
+            window.location.reload();
+        }
+
         // Gestione della navigazione tra le pagine
         function navigate(event, pageId) {
             event.preventDefault();
