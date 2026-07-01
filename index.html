@@ -36,6 +36,36 @@
         /* Smooth transition between App Pages */
         .page-section { transition: opacity 0.4s ease-in-out; }
         body { background-color: #0a0a0a; color: #f5f5f5; font-family: 'Lato', sans-serif; }
+        
+        /* Video Hero Styles */
+        #hero-media-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        #hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        #hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            transition: opacity 1.5s ease-in-out; /* Effetto dissolvenza morbido */
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-gold selection:text-white">
@@ -51,12 +81,15 @@
                     </a>
                 </div>
                 
-                <!-- Desktop Menu (Modificato per App Mode) -->
-                <div class="hidden md:flex space-x-8 items-center">
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-6 items-center">
                     <a href="#" onclick="navigate(event, 'home')" class="text-gray-300 hover:text-gold transition-colors text-sm uppercase tracking-wider font-semibold">Home</a>
                     <a href="#" onclick="navigate(event, 'services')" class="text-gray-300 hover:text-gold transition-colors text-sm uppercase tracking-wider font-semibold">Menu</a>
+                    <a href="#" onclick="navigate(event, 'about')" class="text-gray-300 hover:text-gold transition-colors text-sm uppercase tracking-wider font-semibold">About Us</a>
+                    <a href="#" onclick="navigate(event, 'portfolio')" class="text-gray-300 hover:text-gold transition-colors text-sm uppercase tracking-wider font-semibold">Our Work</a>
                     <a href="#" onclick="navigate(event, 'careers')" class="text-gray-300 hover:text-gold transition-colors text-sm uppercase tracking-wider font-semibold">Careers</a>
                     <a href="#" onclick="navigate(event, 'contact')" class="text-gray-300 hover:text-gold transition-colors text-sm uppercase tracking-wider font-semibold">Contact</a>
+                    <a href="#" onclick="navigate(event, 'booking')" class="text-gray-300 hover:text-gold transition-colors text-sm uppercase tracking-wider font-semibold">Booking</a>
                     <a href="https://wa.me/971544688898" target="_blank" class="bg-blush text-darker px-6 py-2 rounded-full font-bold uppercase tracking-wider hover:bg-gold hover:text-white transition-all transform hover:scale-105 shadow-lg">
                         Book Now
                     </a>
@@ -76,8 +109,11 @@
             <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col items-center">
                 <a href="#" onclick="navigate(event, 'home')" class="block px-3 py-3 text-base uppercase tracking-widest font-semibold text-gray-300 hover:text-gold">Home</a>
                 <a href="#" onclick="navigate(event, 'services')" class="block px-3 py-3 text-base uppercase tracking-widest font-semibold text-gray-300 hover:text-gold">Services Menu</a>
+                <a href="#" onclick="navigate(event, 'about')" class="block px-3 py-3 text-base uppercase tracking-widest font-semibold text-gray-300 hover:text-gold">About Us & Team</a>
+                <a href="#" onclick="navigate(event, 'portfolio')" class="block px-3 py-3 text-base uppercase tracking-widest font-semibold text-gray-300 hover:text-gold">Our Work</a>
                 <a href="#" onclick="navigate(event, 'careers')" class="block px-3 py-3 text-base uppercase tracking-widest font-semibold text-gray-300 hover:text-gold">Careers</a>
                 <a href="#" onclick="navigate(event, 'contact')" class="block px-3 py-3 text-base uppercase tracking-widest font-semibold text-gray-300 hover:text-gold">Contact & Map</a>
+                <a href="#" onclick="navigate(event, 'booking')" class="block px-3 py-3 text-base uppercase tracking-widest font-semibold text-gray-300 hover:text-gold">Booking</a>
                 <a href="https://wa.me/971544688898" target="_blank" class="mt-4 inline-block bg-blush text-darker px-8 py-3 rounded-full font-bold uppercase tracking-wider w-[80%] text-center">
                     <i class="fa-brands fa-whatsapp mr-2"></i> Book Now
                 </a>
@@ -88,18 +124,26 @@
     <main class="w-full">
         
         <!-- ==========================================
-             PAGINA 1: HOME (Copertina + Offerta)
+             PAGINA 1: HOME (Copertina Video + Offerta)
              ========================================== -->
         <div id="page-home" class="page-section block">
             
-            <!-- Hero Section -->
+            <!-- Hero Section con Video Background -->
             <section class="relative h-screen flex items-center justify-center overflow-hidden">
-                <div class="absolute inset-0 z-0">
-                    <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2000" alt="Luxury Spa Background" class="w-full h-full object-cover opacity-60">
-                    <div class="absolute inset-0 bg-gradient-to-b from-darker/70 via-darker/50 to-darker"></div>
+                
+                <div id="hero-media-container">
+                    <!-- Video di sottofondo in loop -->
+                    <video id="hero-video" autoplay muted loop playsinline>
+                        <source src="https://player.vimeo.com/external/371837677.sd.mp4?s=1017583850471394315563518718084141131441&profile_id=164&oauth2_token_id=57447761" type="video/mp4">
+                    </video>
+                    <!-- Immagine di copertina statica che svanisce -->
+                    <img id="hero-image" src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2000" alt="Luxury Spa Background">
+                    
+                    <!-- Overlay Scuro -->
+                    <div class="absolute inset-0 bg-gradient-to-b from-darker/70 via-darker/50 to-darker z-10"></div>
                 </div>
                 
-                <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-20">
+                <div class="relative z-20 text-center px-4 max-w-4xl mx-auto mt-20">
                     <p class="text-gold font-sans uppercase tracking-[0.3em] mb-4 text-sm md:text-base font-semibold">Lotus Grand Hotel, Deira</p>
                     <h1 class="font-serif text-5xl md:text-7xl font-bold mb-6 leading-tight">
                         Premium Beauty.<br>
@@ -206,7 +250,120 @@
         </div>
 
         <!-- ==========================================
-             PAGINA 3: CAREERS
+             PAGINA 3: ABOUT US & TEAM (NUOVA)
+             ========================================== -->
+        <div id="page-about" class="page-section hidden pt-20">
+            <section class="py-24 bg-dark min-h-screen">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <p class="text-gold font-sans uppercase tracking-[0.2em] mb-4 text-sm font-semibold">Our Story & People</p>
+                        <h2 class="font-serif text-4xl md:text-5xl font-bold text-white">About Pinky'z Salon</h2>
+                        <div class="w-24 h-1 bg-blush mx-auto mt-6"></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-24">
+                        <div>
+                            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1000&auto=format&fit=crop&q=80" alt="Our Salon Interior" class="rounded-3xl shadow-2xl border border-white/10">
+                        </div>
+                        <div>
+                            <h3 class="font-serif text-3xl font-bold text-white mb-6">A Haven of Beauty in Deira</h3>
+                            <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                                Founded with a vision to provide premium beauty services at an unbeatable value, Pinky'z Salon has become a cherished destination within the Lotus Grand Hotel. We believe that luxury and self-care should be accessible to every woman.
+                            </p>
+                            <p class="text-gray-300 text-lg leading-relaxed">
+                                Our team of dedicated professionals is passionate about helping you look and feel your absolute best, using only high-quality products and techniques in a relaxing and hygienic environment.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="text-center mb-12">
+                        <h3 class="font-serif text-3xl font-bold text-white">Meet Our Team</h3>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
+                        <!-- Team Member 1 -->
+                        <div class="bg-darker p-6 rounded-2xl border border-white/5 text-center">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&auto=format&fit=crop&q=80" alt="Founder" class="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-gold/20 object-cover">
+                            <h4 class="font-serif text-xl text-white font-bold mb-2">Pinky</h4>
+                            <p class="text-gold uppercase text-sm tracking-wider mb-4">Founder & Lead Stylist</p>
+                            <p class="text-gray-400 italic">"Beauty is power; a smile is its sword."</p>
+                        </div>
+                         <!-- Team Member 2 -->
+                        <div class="bg-darker p-6 rounded-2xl border border-white/5 text-center">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=80" alt="Nail Tech" class="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-gold/20 object-cover">
+                            <h4 class="font-serif text-xl text-white font-bold mb-2">Sarah</h4>
+                            <p class="text-gold uppercase text-sm tracking-wider mb-4">Senior Nail Technician</p>
+                             <p class="text-gray-400 italic">"Details make perfection."</p>
+                        </div>
+                         <!-- Team Member 3 -->
+                        <div class="bg-darker p-6 rounded-2xl border border-white/5 text-center">
+                            <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=500&auto=format&fit=crop&q=80" alt="Therapist" class="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-gold/20 object-cover">
+                            <h4 class="font-serif text-xl text-white font-bold mb-2">Aisha</h4>
+                            <p class="text-gold uppercase text-sm tracking-wider mb-4">Spa Therapist Expert</p>
+                             <p class="text-gray-400 italic">"Relaxation is the key to true beauty."</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+         <!-- ==========================================
+             PAGINA 4: OUR WORK (PORTFOLIO) (NUOVA)
+             ========================================== -->
+        <div id="page-portfolio" class="page-section hidden pt-20">
+            <section class="py-24 bg-darker min-h-screen">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <p class="text-gold font-sans uppercase tracking-[0.2em] mb-4 text-sm font-semibold">Real Results</p>
+                        <h2 class="font-serif text-4xl md:text-5xl font-bold text-white">Our Work Gallery</h2>
+                        <div class="w-24 h-1 bg-blush mx-auto mt-6"></div>
+                         <p class="text-gray-400 mt-6 max-w-2xl mx-auto">Take a look at some of the stunning transformations created by our expert team.</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
+                        <div class="relative group overflow-hidden rounded-2xl">
+                            <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&auto=format&fit=crop&q=80" alt="Hair Styling" class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-darker/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <p class="text-white font-serif text-xl font-bold">Hair Styling & Color</p>
+                            </div>
+                        </div>
+                        <div class="relative group overflow-hidden rounded-2xl">
+                            <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&auto=format&fit=crop&q=80" alt="Nail Art" class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                             <div class="absolute inset-0 bg-darker/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <p class="text-white font-serif text-xl font-bold">Nail Art & Extensions</p>
+                            </div>
+                        </div>
+                        <div class="relative group overflow-hidden rounded-2xl">
+                            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&auto=format&fit=crop&q=80" alt="Spa Treatment" class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                             <div class="absolute inset-0 bg-darker/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <p class="text-white font-serif text-xl font-bold">Spa & Facials</p>
+                            </div>
+                        </div>
+                        <div class="relative group overflow-hidden rounded-2xl">
+                            <img src="https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?w=800&auto=format&fit=crop&q=80" alt="Hair Treatment" class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                             <div class="absolute inset-0 bg-darker/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <p class="text-white font-serif text-xl font-bold">Hair Treatments</p>
+                            </div>
+                        </div>
+                        <div class="relative group overflow-hidden rounded-2xl">
+                            <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=800&auto=format&fit=crop&q=80" alt="Pedicure" class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                             <div class="absolute inset-0 bg-darker/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <p class="text-white font-serif text-xl font-bold">Pedicure & Foot Spa</p>
+                            </div>
+                        </div>
+                        <div class="relative group overflow-hidden rounded-2xl">
+                            <img src="https://images.unsplash.com/photo-1596436909076-1c9345a55046?w=800&auto=format&fit=crop&q=80" alt="Lashes & Brows" class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                             <div class="absolute inset-0 bg-darker/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <p class="text-white font-serif text-xl font-bold">Lashes & Brows</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ==========================================
+             PAGINA 5: CAREERS
              ========================================== -->
         <div id="page-careers" class="page-section hidden pt-20">
             <section class="py-24 bg-blush text-darker relative min-h-screen flex items-center">
@@ -229,9 +386,8 @@
                                 <li><i class="fa-solid fa-check text-darker mr-2"></i> Great Benefits</li>
                             </ul>
                             
-                            <!-- INSERISCI QUI IL TUO LINK GOOGLE FORMS -->https://forms.gle/G6HVBowuq9QrfpAQA
-                            <!-- Sostituisci il link "https://forms.gle/..." con il tuo vero link -->https://forms.gle/G6HVBowuq9QrfpAQA
-                            <a href="https://forms.gle/IL_TUO_LINK_QUI" target="_blank" class="inline-block bg-darker text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-dark transition-colors shadow-xl">
+                            <!-- LINK GOOGLE FORMS CORRETTO -->
+                            <a href="https://forms.gle/G6HVBowuq9QrfpAQA" target="_blank" class="inline-block bg-darker text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-dark transition-colors shadow-xl">
                                 Apply Now
                             </a>
                             <p class="mt-3 text-xs opacity-70 italic">*Takes 2 minutes via our quick form.</p>
@@ -242,7 +398,7 @@
         </div>
 
         <!-- ==========================================
-             PAGINA 4: CONTACT
+             PAGINA 6: CONTACT
              ========================================== -->
         <div id="page-contact" class="page-section hidden pt-20">
             <section class="bg-dark py-24 min-h-screen">
@@ -289,6 +445,37 @@
                 </div>
             </section>
         </div>
+        
+        <!-- ==========================================
+             PAGINA 7: BOOKING CALENDAR (NUOVA)
+             ========================================== -->
+        <div id="page-booking" class="page-section hidden pt-20">
+            <section class="bg-darker py-24 min-h-screen">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <p class="text-gold font-sans uppercase tracking-[0.2em] mb-4 text-sm font-semibold">Plan Your Visit</p>
+                        <h2 class="font-serif text-4xl md:text-5xl font-bold text-white">Check Availability</h2>
+                        <div class="w-24 h-1 bg-blush mx-auto mt-6"></div>
+                        <p class="text-gray-400 mt-6 max-w-2xl mx-auto">Select a service and find the perfect time for your pampering session.</p>
+                    </div>
+
+                    <!-- Contenitore per il Widget del Calendario (Esempio con Calendly) -->
+                    <div class="bg-white rounded-3xl overflow-hidden shadow-2xl mx-auto max-w-4xl h-[600px]">
+                        <!-- Calendly inline widget begin -->
+                        <div class="calendly-inline-widget" data-url="https://calendly.com/pinkyzsalon-demo/service-booking?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=121212&text_color=f5f5f5&primary_color=c5a059" style="min-width:320px;height:600px;"></div>
+                        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                        <!-- Calendly inline widget end -->
+                    </div>
+                    
+                    <div class="text-center mt-12">
+                        <p class="text-gray-300 mb-4">Prefer to book via WhatsApp?</p>
+                         <a href="https://wa.me/971544688898" target="_blank" class="inline-block bg-gold text-darker px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-white transition-colors shadow-xl">
+                            <i class="fa-brands fa-whatsapp mr-2"></i> Chat with Reception
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
 
     <!-- Footer (Sempre visibile in fondo) -->
@@ -299,8 +486,9 @@
                     &copy; 2024 Pinky'z Salon. All rights reserved. 
                 </p>
                 <div class="flex space-x-6">
-                    <a href="#" class="text-gray-500 hover:text-gold transition-colors text-xl"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="text-gray-500 hover:text-gold transition-colors text-xl"><i class="fa-brands fa-facebook"></i></a>
+                    <!-- Link Social Corretti -->
+                    <a href="https://www.instagram.com/pinkyzsalon/" target="_blank" class="text-gray-500 hover:text-gold transition-colors text-xl"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/pinkyzsalon/" target="_blank" class="text-gray-500 hover:text-gold transition-colors text-xl"><i class="fa-brands fa-facebook"></i></a>
                 </div>
             </div>
         </div>
@@ -310,7 +498,6 @@
     <script>
         // Funzione per navigare tra le "Stanze" (App Mode)
         function navigate(event, pageId) {
-            // Impedisce alla pagina di saltare su e giù
             event.preventDefault();
             
             // 1. Nasconde tutte le sezioni
@@ -353,6 +540,17 @@
                 navbar.classList.add('bg-darker/50');
                 navbar.classList.remove('bg-darker/95', 'shadow-lg');
             }
+        });
+
+        // Gestione del Video Hero con Dissolvenza
+        window.addEventListener('load', function() {
+            const image = document.getElementById('hero-image');
+            // Dopo 4 secondi, l'immagine inizia a svanire per mostrare il video dietro
+            setTimeout(() => {
+                if(image) {
+                    image.style.opacity = '0';
+                }
+            }, 4000);
         });
     </script>
 </body>
