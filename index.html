@@ -1,33 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pinky'z Salon | Lotus Grand Hotel</title>
-    <!-- Google Fonts for Luxury Look -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Tailwind CSS for Styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        // Custom Colors Configuration
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        gold: '#C5A059',
-                        blush: '#E8D3D1',
-                        dark: '#121212',
-                        darker: '#0a0a0a'
-                    },
-                    fontFamily: {
-                        serif: ['"Playfair Display"', 'serif'],
-                        sans: ['Lato', 'sans-serif']
-                    }
+/* Stili per la Hero con Video */
+        #hero-video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            background-color: #000;
+        }
+        #hero-video-iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 56.25vw; /* 16:9 Aspect Ratio */
+            min-height: 100vh;
+            min-width: 177.77vh; /* 16:9 Aspect Ratio */
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            pointer-events: none; /* Impedisce interazioni accidentali col video */
+        }
+        #hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8; /* Opacità iniziale dell'immagine */
+            transition: opacity 2s ease-in-out;
+            z-index: 1;
+        }
+        #hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(10,10,10,0.7) 0%, rgba(10,10,10,0.5) 50%, rgba(10,10,10,1) 100%);
+            z-index: 2;
+        }
                 }
             }
         }
@@ -124,24 +138,31 @@
     <main class="w-full">
         
         <!-- ==========================================
-             PAGINA 1: HOME (Copertina Video + Offerta)
+             PAGINA 1: HOME (Copertina con Video + Offerta)
              ========================================== -->
         <div id="page-home" class="page-section block">
             
             <!-- Hero Section con Video Background -->
-            <section class="relative h-screen flex items-center justify-center overflow-hidden">
+            <section class="relative h-screen flex items-center justify-center overflow-hidden bg-black">
                 
-                <div id="hero-media-container">
-                    <!-- Video di sottofondo in loop -->
-                    <video id="hero-video" autoplay muted loop playsinline>
-                        <source src="https://player.vimeo.com/external/371837677.sd.mp4?s=1017583850471394315563518718084141131441&profile_id=164&oauth2_token_id=57447761" type="video/mp4">
-                    </video>
-                    <!-- Immagine di copertina statica che svanisce -->
+                <!-- Contenitore Video e Immagine -->
+                <div id="hero-video-container">
+                    <!-- Immagine Statica Iniziale -->
                     <img id="hero-image" src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2000" alt="Luxury Spa Background">
                     
-                    <!-- Overlay Scuro -->
-                    <div class="absolute inset-0 bg-gradient-to-b from-darker/70 via-darker/50 to-darker z-10"></div>
+                    <!-- Video di Sfondo (Vimeo iframe senza controlli) -->
+                    <iframe id="hero-video-iframe" 
+                            src="https://player.vimeo.com/video/449339247?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1" 
+                            frameborder="0" 
+                            webkitallowfullscreen 
+                            mozallowfullscreen 
+                            allowfullscreen 
+                            allow="autoplay; fullscreen">
+                    </iframe>
                 </div>
+                
+                <!-- Overlay Sfumato -->
+                <div id="hero-overlay"></div>
                 
                 <div class="relative z-20 text-center px-4 max-w-4xl mx-auto mt-20">
                     <p class="text-gold font-sans uppercase tracking-[0.3em] mb-4 text-sm md:text-base font-semibold">Lotus Grand Hotel, Deira</p>
@@ -317,44 +338,53 @@
                         <p class="text-gold font-sans uppercase tracking-[0.2em] mb-4 text-sm font-semibold">Real Results</p>
                         <h2 class="font-serif text-4xl md:text-5xl font-bold text-white">Our Work Gallery</h2>
                         <div class="w-24 h-1 bg-blush mx-auto mt-6"></div>
-                         <p class="text-gray-400 mt-6 max-w-2xl mx-auto">Take a look at some of the stunning transformations created by our expert team.</p>
+                         <p class="text-gray-400 mt-6 max-w-2xl mx-auto">(Immagini segnaposto per mostrare esempi del loro lavoro. Verranno sostituite con le loro foto reali.)</p>
                     </div>
 
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
-                        <div class="relative group overflow-hidden rounded-2xl">
-                            <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&auto=format&fit=crop&q=80" alt="Hair Styling" class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-darker/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                <p class="text-white font-serif text-xl font-bold">Hair Styling & Color</p>
+                    <!-- Layout a griglia con immagini più lunghe e snelle -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
+                        <!-- Portfolio Item 1 (Hair) -->
+                        <div class="relative group overflow-hidden rounded-md border border-white/5 shadow-2xl">
+                            <!-- Altezza aumentata (h-[500px]) per l'effetto locandina -->
+                            <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1200&fit=crop&q=80" alt="Hair Styling Example" class="w-full h-[450px] md:h-[550px] object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-darker via-darker/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
+                                <p class="text-white font-serif text-2xl font-bold tracking-wide transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Hair Styling</p>
                             </div>
                         </div>
-                        <div class="relative group overflow-hidden rounded-2xl">
-                            <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&auto=format&fit=crop&q=80" alt="Nail Art" class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110">
-                             <div class="absolute inset-0 bg-darker/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                <p class="text-white font-serif text-xl font-bold">Nail Art & Extensions</p>
+                        <!-- Portfolio Item 2 (Nails) -->
+                        <div class="relative group overflow-hidden rounded-md border border-white/5 shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=800&h=1200&fit=crop&q=80" alt="Nail Art Example" class="w-full h-[450px] md:h-[550px] object-cover transition-transform duration-700 group-hover:scale-105">
+                             <div class="absolute inset-0 bg-gradient-to-t from-darker via-darker/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
+                                <p class="text-white font-serif text-2xl font-bold tracking-wide transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Nail Art</p>
                             </div>
                         </div>
-                        <div class="relative group overflow-hidden rounded-2xl">
-                            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&auto=format&fit=crop&q=80" alt="Spa Treatment" class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110">
-                             <div class="absolute inset-0 bg-darker/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                <p class="text-white font-serif text-xl font-bold">Spa & Facials</p>
+                        <!-- Portfolio Item 3 (Spa/Facial) -->
+                        <div class="relative group overflow-hidden rounded-md border border-white/5 shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&h=1200&fit=crop&q=80" alt="Spa Treatment Example" class="w-full h-[450px] md:h-[550px] object-cover transition-transform duration-700 group-hover:scale-105">
+                             <div class="absolute inset-0 bg-gradient-to-t from-darker via-darker/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
+                                <p class="text-white font-serif text-2xl font-bold tracking-wide transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Facial Spa</p>
                             </div>
                         </div>
-                        <div class="relative group overflow-hidden rounded-2xl">
-                            <img src="https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?w=800&auto=format&fit=crop&q=80" alt="Hair Treatment" class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110">
-                             <div class="absolute inset-0 bg-darker/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                <p class="text-white font-serif text-xl font-bold">Hair Treatments</p>
+                        <!-- Portfolio Item 4 (Hair) -->
+                        <div class="relative group overflow-hidden rounded-md border border-white/5 shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?w=800&h=1200&fit=crop&q=80" alt="Hair Treatment Example" class="w-full h-[450px] md:h-[550px] object-cover transition-transform duration-700 group-hover:scale-105">
+                             <div class="absolute inset-0 bg-gradient-to-t from-darker via-darker/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
+                                <p class="text-white font-serif text-2xl font-bold tracking-wide transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Treatments</p>
                             </div>
                         </div>
-                        <div class="relative group overflow-hidden rounded-2xl">
-                            <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=800&auto=format&fit=crop&q=80" alt="Pedicure" class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110">
-                             <div class="absolute inset-0 bg-darker/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                <p class="text-white font-serif text-xl font-bold">Pedicure & Foot Spa</p>
+                         <!-- Portfolio Item 5 (Nails) -->
+                        <div class="relative group overflow-hidden rounded-md border border-white/5 shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059e98b?w=800&h=1200&fit=crop&q=80" alt="Pedicure Example" class="w-full h-[450px] md:h-[550px] object-cover transition-transform duration-700 group-hover:scale-105">
+                             <div class="absolute inset-0 bg-gradient-to-t from-darker via-darker/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
+                                <p class="text-white font-serif text-2xl font-bold tracking-wide transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Pedicure</p>
                             </div>
                         </div>
-                        <div class="relative group overflow-hidden rounded-2xl">
-                            <img src="https://images.unsplash.com/photo-1596436909076-1c9345a55046?w=800&auto=format&fit=crop&q=80" alt="Lashes & Brows" class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110">
-                             <div class="absolute inset-0 bg-darker/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                <p class="text-white font-serif text-xl font-bold">Lashes & Brows</p>
+                         <!-- Portfolio Item 6 (Makeup/Lashes) -->
+                        <div class="relative group overflow-hidden rounded-md border border-white/5 shadow-2xl">
+                            <!-- Link foto riparato per "Lashes & Brows" -->
+                            <img src="https://images.unsplash.com/photo-1512496015851-a1fbaf69289b?w=800&h=1200&fit=crop&q=80" alt="Lashes & Brows Example" class="w-full h-[450px] md:h-[550px] object-cover transition-transform duration-700 group-hover:scale-105">
+                             <div class="absolute inset-0 bg-gradient-to-t from-darker via-darker/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
+                                <p class="text-white font-serif text-2xl font-bold tracking-wide transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Brows & Lashes</p>
                             </div>
                         </div>
                     </div>
@@ -456,13 +486,13 @@
                         <p class="text-gold font-sans uppercase tracking-[0.2em] mb-4 text-sm font-semibold">Plan Your Visit</p>
                         <h2 class="font-serif text-4xl md:text-5xl font-bold text-white">Check Availability</h2>
                         <div class="w-24 h-1 bg-blush mx-auto mt-6"></div>
-                        <p class="text-gray-400 mt-6 max-w-2xl mx-auto">Select a service and find the perfect time for your pampering session.</p>
+                        <p class="text-gray-400 mt-6 max-w-2xl mx-auto">(Esempio di calendario interattivo. Verrà collegato al loro sistema reale.)</p>
                     </div>
 
-                    <!-- Contenitore per il Widget del Calendario (Esempio con Calendly) -->
-                    <div class="bg-white rounded-3xl overflow-hidden shadow-2xl mx-auto max-w-4xl h-[600px]">
-                        <!-- Calendly inline widget begin -->
-                        <div class="calendly-inline-widget" data-url="https://calendly.com/pinkyzsalon-demo/service-booking?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=121212&text_color=f5f5f5&primary_color=c5a059" style="min-width:320px;height:600px;"></div>
+                    <!-- Contenitore per il Widget del Calendario (Esempio Funzionante con Calendly) -->
+                    <div class="bg-white rounded-3xl overflow-hidden shadow-2xl mx-auto max-w-4xl h-[650px] border-4 border-dark">
+                        <!-- Calendly inline widget begin - con link demo pubblico e hide_gdpr_banner=1 -->
+                        <div class="calendly-inline-widget" data-url="https://calendly.com/pinkyzsalon-demo/service-booking?hide_landing_page_details=1&hide_gdpr_banner=1" style="min-width:320px;height:650px;"></div>
                         <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
                         <!-- Calendly inline widget end -->
                     </div>
@@ -544,13 +574,17 @@
 
         // Gestione del Video Hero con Dissolvenza
         window.addEventListener('load', function() {
+            const videoIframe = document.getElementById('hero-video-iframe');
             const image = document.getElementById('hero-image');
-            // Dopo 4 secondi, l'immagine inizia a svanire per mostrare il video dietro
-            setTimeout(() => {
-                if(image) {
-                    image.style.opacity = '0';
-                }
-            }, 4000);
+
+            // Controlla se gli elementi esistono per evitare errori nelle altre stanze
+            if (videoIframe && image) {
+                // Dopo 4 secondi, dissolve l'immagine e mostra l'iframe del video
+                setTimeout(() => {
+                    image.style.opacity = '0'; 
+                    videoIframe.style.opacity = '0.7'; 
+                }, 4000); 
+            }
         });
     </script>
 </body>
