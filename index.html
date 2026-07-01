@@ -144,15 +144,12 @@
                 <div id="hero-video-container">
                     <img id="hero-image" src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2000" alt="Luxury Spa Background">
                     
-                    <!-- Background Video Iframe (Auto-plays reliably) -->
-                    <iframe id="hero-video-iframe" 
-                            src="https://player.vimeo.com/video/449339247?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1" 
-                            frameborder="0" 
-                            webkitallowfullscreen 
-                            mozallowfullscreen 
-                            allowfullscreen 
-                            allow="autoplay; fullscreen">
-                    </iframe>
+                    <!-- Background Video (Auto-plays reliably natively) -->
+                    <video id="hero-video-iframe" 
+                           autoplay muted loop playsinline 
+                           style="position: absolute; top: 50%; left: 50%; width: 100vw; height: 56.25vw; min-height: 100vh; min-width: 177.77vh; transform: translate(-50%, -50%); opacity: 0; transition: opacity 2s ease-in-out; pointer-events: none; object-fit: cover;">
+                        <source src="https://assets.mixkit.co/videos/preview/mixkit-beautiful-woman-having-a-relaxing-massage-at-a-spa-31855-large.mp4" type="video/mp4">
+                    </video>
                 </div>
                 
                 <div id="hero-overlay"></div>
@@ -320,38 +317,14 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
                         <!-- Portfolio Items con Immagini Slanciate H-[500px] -->
                         <div class="relative group overflow-hidden rounded-md border border-white/5 shadow-2xl">
-                            <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1200&fit=crop&q=80" alt="Hair Styling Example" class="w-full h-[450px] md:h-[550px] object-cover transition-transform duration-700 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-gradient-to-t from-darker via-darker/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
-                                <p class="text-white font-serif text-2xl font-bold tracking-wide transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Hair Styling</p>
-                            </div>
-                        </div>
-                        <div class="relative group overflow-hidden rounded-md border border-white/5 shadow-2xl">
-                            <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=800&h=1200&fit=crop&q=80" alt="Nail Art Example" class="w-full h-[450px] md:h-[550px] object-cover transition-transform duration-700 group-hover:scale-105">
-                             <div class="absolute inset-0 bg-gradient-to-t from-darker via-darker/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
-                                <p class="text-white font-serif text-2xl font-bold tracking-wide transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Nail Art</p>
-                            </div>
-                        </div>
-                        <div class="relative group overflow-hidden rounded-md border border-white/5 shadow-2xl">
-                            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&h=1200&fit=crop&q=80" alt="Spa Treatment Example" class="w-full h-[450px] md:h-[550px] object-cover transition-transform duration-700 group-hover:scale-105">
-                             <div class="absolute inset-0 bg-gradient-to-t from-darker via-darker/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
-                                <p class="text-white font-serif text-2xl font-bold tracking-wide transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Facial Spa</p>
-                            </div>
-                        </div>
-                        <div class="relative group overflow-hidden rounded-md border border-white/5 shadow-2xl">
-                            <img src="https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?w=800&h=1200&fit=crop&q=80" alt="Hair Treatment Example" class="w-full h-[450px] md:h-[550px] object-cover transition-transform duration-700 group-hover:scale-105">
-                             <div class="absolute inset-0 bg-gradient-to-t from-darker via-darker/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
-                                <p class="text-white font-serif text-2xl font-bold tracking-wide transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Treatments</p>
-                            </div>
-                        </div>
-                        <div class="relative group overflow-hidden rounded-md border border-white/5 shadow-2xl">
-                            <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059e98b?w=800&h=1200&fit=crop&q=80" alt="Pedicure Example" class="w-full h-[450px] md:h-[550px] object-cover transition-transform duration-700 group-hover:scale-105">
+                            <img src="https://images.pexels.com/photos/3985304/pexels-photo-3985304.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop" alt="Pedicure Example" class="w-full h-[450px] md:h-[550px] object-cover transition-transform duration-700 group-hover:scale-105">
                              <div class="absolute inset-0 bg-gradient-to-t from-darker via-darker/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
                                 <p class="text-white font-serif text-2xl font-bold tracking-wide transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Pedicure</p>
                             </div>
                         </div>
                         <!-- Link Riparato per Lashes and Brows -->
                         <div class="relative group overflow-hidden rounded-md border border-white/5 shadow-2xl">
-                            <img src="https://images.unsplash.com/photo-1512496015851-a1fbaf69289b?w=800&h=1200&fit=crop&q=80" alt="Lashes & Brows Example" class="w-full h-[450px] md:h-[550px] object-cover transition-transform duration-700 group-hover:scale-105">
+                            <img src="https://images.pexels.com/photos/13733057/pexels-photo-13733057.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop" alt="Lashes & Brows Example" class="w-full h-[450px] md:h-[550px] object-cover transition-transform duration-700 group-hover:scale-105">
                              <div class="absolute inset-0 bg-gradient-to-t from-darker via-darker/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
                                 <p class="text-white font-serif text-2xl font-bold tracking-wide transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Brows & Lashes</p>
                             </div>
@@ -441,13 +414,58 @@
                         <p class="text-gold font-sans uppercase tracking-[0.2em] mb-4 text-sm font-semibold">Plan Your Visit</p>
                         <h2 class="font-serif text-4xl md:text-5xl font-bold text-white">Check Availability</h2>
                         <div class="w-24 h-1 bg-blush mx-auto mt-6"></div>
-                        <p class="text-gray-400 mt-6 max-w-2xl mx-auto">(Esempio di calendario interattivo funzionante.)</p>
+                        <p class="text-gray-400 mt-6 max-w-2xl mx-auto">(This is a visual demo. It will be connected to your real booking system.)</p>
                     </div>
 
-                    <!-- Widget del Calendario (Demo Funzionante) -->
-                    <div class="bg-white rounded-3xl overflow-hidden shadow-2xl mx-auto max-w-4xl h-[650px] border-4 border-dark">
-                        <div class="calendly-inline-widget" data-url="https://calendly.com/pinkyzsalon-demo/service-booking?hide_landing_page_details=1&hide_gdpr_banner=1" style="min-width:320px;height:650px;"></div>
-                        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                    <!-- Widget del Calendario (Demo Visivo Indistruttibile) -->
+                    <div class="bg-white rounded-3xl overflow-hidden shadow-2xl mx-auto max-w-4xl border-4 border-dark flex flex-col md:flex-row">
+                        <!-- Date Selection -->
+                        <div class="w-full md:w-1/2 p-8 md:p-10 bg-gray-50">
+                            <h3 class="text-2xl font-serif font-bold text-darker mb-8 text-center md:text-left">Select Date</h3>
+                            <div class="grid grid-cols-7 gap-3 text-center mb-4">
+                                <div class="font-bold text-gray-400 text-sm uppercase">Su</div>
+                                <div class="font-bold text-gray-400 text-sm uppercase">Mo</div>
+                                <div class="font-bold text-gray-400 text-sm uppercase">Tu</div>
+                                <div class="font-bold text-gray-400 text-sm uppercase">We</div>
+                                <div class="font-bold text-gray-400 text-sm uppercase">Th</div>
+                                <div class="font-bold text-gray-400 text-sm uppercase">Fr</div>
+                                <div class="font-bold text-gray-400 text-sm uppercase">Sa</div>
+                            </div>
+                            <div class="grid grid-cols-7 gap-3 text-center font-medium text-darker">
+                                <div class="py-2 text-gray-300">28</div><div class="py-2 text-gray-300">29</div><div class="py-2 text-gray-300">30</div>
+                                <div class="py-2 rounded-full cursor-pointer hover:bg-gold hover:text-white transition-colors">1</div>
+                                <div class="py-2 rounded-full cursor-pointer hover:bg-gold hover:text-white transition-colors">2</div>
+                                <div class="py-2 rounded-full cursor-pointer hover:bg-gold hover:text-white transition-colors">3</div>
+                                <div class="py-2 rounded-full cursor-pointer hover:bg-gold hover:text-white transition-colors">4</div>
+                                <div class="py-2 rounded-full cursor-pointer hover:bg-gold hover:text-white transition-colors">5</div>
+                                <div class="py-2 rounded-full cursor-pointer hover:bg-gold hover:text-white transition-colors">6</div>
+                                <div class="py-2 bg-gold text-white rounded-full cursor-pointer shadow-md transform scale-110">7</div>
+                                <div class="py-2 rounded-full cursor-pointer hover:bg-gold hover:text-white transition-colors">8</div>
+                                <div class="py-2 rounded-full cursor-pointer hover:bg-gold hover:text-white transition-colors">9</div>
+                                <div class="py-2 rounded-full cursor-pointer hover:bg-gold hover:text-white transition-colors">10</div>
+                                <div class="py-2 rounded-full cursor-pointer hover:bg-gold hover:text-white transition-colors">11</div>
+                                <div class="py-2 rounded-full cursor-pointer hover:bg-gold hover:text-white transition-colors">12</div>
+                                <div class="py-2 rounded-full cursor-pointer hover:bg-gold hover:text-white transition-colors">13</div>
+                                <div class="py-2 rounded-full cursor-pointer hover:bg-gold hover:text-white transition-colors">14</div>
+                            </div>
+                        </div>
+                        <!-- Time Selection -->
+                        <div class="w-full md:w-1/2 p-8 md:p-10 bg-white border-t md:border-t-0 md:border-l border-gray-200 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-2xl font-serif font-bold text-darker mb-8 text-center md:text-left">Available Times</h3>
+                                <div class="grid grid-cols-2 gap-4 mb-8">
+                                    <button class="border-2 border-gray-200 text-darker hover:border-gold hover:text-gold py-3 rounded-xl font-bold transition-all">10:00 AM</button>
+                                    <button class="border-2 border-gray-200 text-darker hover:border-gold hover:text-gold py-3 rounded-xl font-bold transition-all">11:30 AM</button>
+                                    <button class="border-2 border-gold bg-gold text-white shadow-md py-3 rounded-xl font-bold transition-all transform scale-105">01:00 PM</button>
+                                    <button class="border-2 border-gray-200 text-darker hover:border-gold hover:text-gold py-3 rounded-xl font-bold transition-all">03:30 PM</button>
+                                    <button class="border-2 border-gray-200 text-darker hover:border-gold hover:text-gold py-3 rounded-xl font-bold transition-all">05:00 PM</button>
+                                    <button class="border-2 border-gray-200 text-darker hover:border-gold hover:text-gold py-3 rounded-xl font-bold transition-all">06:30 PM</button>
+                                </div>
+                            </div>
+                            <button class="w-full bg-darker text-white py-4 rounded-full font-bold uppercase tracking-wider hover:bg-gold transition-colors shadow-lg">
+                                Confirm Booking
+                            </button>
+                        </div>
                     </div>
                     
                     <div class="text-center mt-12">
@@ -478,7 +496,7 @@
     <script>
         // Gestione Menu a tendina
         function navigate(event, pageId) {
-            event.preventDefault();
+            event.preventDefault();tto ma il video purtroppo
             const allPages = document.querySelectorAll('.page-section');
             allPages.forEach(page => {
                 page.classList.remove('block');
@@ -522,6 +540,8 @@
                 setTimeout(() => {
                     image.style.opacity = '0'; 
                     videoIframe.style.opacity = '0.7'; 
+                    // Forza l'avvio del video nativo
+                    if(videoIframe.play) { videoIframe.play(); }
                 }, 4000); 
             }
         });
