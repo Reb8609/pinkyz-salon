@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pinky'z Salon | Lotus Grand Hotel</title>
+    <!-- Google Fonts for Luxury Look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    
+    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -36,7 +37,7 @@
         .page-section { transition: opacity 0.4s ease-in-out; }
         body { background-color: #0a0a0a; color: #f5f5f5; font-family: 'Lato', sans-serif; }
         
-        /* Hero Styles (Solo Immagine Statica) */
+        /* Hero Styles (Immagine Statica) */
         #hero-media-container {
             position: absolute;
             top: 0;
@@ -54,7 +55,7 @@
             top: 0;
             left: 0;
             z-index: 1;
-            /* Lieve zoom animation per dare movimento anche senza video */
+            /* Lieve zoom animation per dare movimento elegante */
             animation: slowZoom 20s infinite alternate linear; 
         }
 
@@ -66,7 +67,7 @@
 </head>
 <body class="antialiased selection:bg-gold selection:text-white">
 
-    <nav class="fixed w-full z-50 bg-darker/90 backdrop-blur-md border-b border-white/10 transition-all duration-300" id="navbar">
+    <nav class="fixed w-full z-40 bg-darker/90 backdrop-blur-md border-b border-white/10 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
@@ -76,22 +77,41 @@
                     </a>
                 </div>
                 
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-6 items-center">
-                    <a href="#" onclick="navigate(event, 'home')" class="text-gray-300 hover:text-gold transition-colors text-sm uppercase tracking-wider font-semibold">Home</a>
-                    <a href="#" onclick="navigate(event, 'services')" class="text-gray-300 hover:text-gold transition-colors text-sm uppercase tracking-wider font-semibold">Menu</a>
-                    <a href="#" onclick="navigate(event, 'about')" class="text-gray-300 hover:text-gold transition-colors text-sm uppercase tracking-wider font-semibold">About Us</a>
-                    <a href="#" onclick="navigate(event, 'portfolio')" class="text-gray-300 hover:text-gold transition-colors text-sm uppercase tracking-wider font-semibold">Our Work</a>
-                    <a href="#" onclick="navigate(event, 'careers')" class="text-gray-300 hover:text-gold transition-colors text-sm uppercase tracking-wider font-semibold">Careers</a>
-                    <a href="#" onclick="navigate(event, 'contact')" class="text-gray-300 hover:text-gold transition-colors text-sm uppercase tracking-wider font-semibold">Contact</a>
-                    <a href="#" onclick="navigate(event, 'booking')" class="text-gray-300 hover:text-gold transition-colors text-sm uppercase tracking-wider font-semibold">Booking</a>
-                    <a href="https://wa.me/971544688898" target="_blank" class="bg-blush text-darker px-6 py-2 rounded-full font-bold uppercase tracking-wider hover:bg-gold hover:text-white transition-all transform hover:scale-105 shadow-lg">
+                <!-- Desktop Menu (Ottimizzato per iPad con lg:flex) -->
+                <div class="hidden lg:flex space-x-5 xl:space-x-6 items-center ml-auto">
+                    <a href="#" onclick="navigate(event, 'home')" class="text-gray-300 hover:text-gold transition-colors text-xs xl:text-sm uppercase tracking-wider font-semibold">Home</a>
+                    <a href="#" onclick="navigate(event, 'services')" class="text-gray-300 hover:text-gold transition-colors text-xs xl:text-sm uppercase tracking-wider font-semibold">Menu</a>
+                    <a href="#" onclick="navigate(event, 'about')" class="text-gray-300 hover:text-gold transition-colors text-xs xl:text-sm uppercase tracking-wider font-semibold">About Us</a>
+                    <a href="#" onclick="navigate(event, 'portfolio')" class="text-gray-300 hover:text-gold transition-colors text-xs xl:text-sm uppercase tracking-wider font-semibold">Our Work</a>
+                    <a href="#" onclick="navigate(event, 'careers')" class="text-gray-300 hover:text-gold transition-colors text-xs xl:text-sm uppercase tracking-wider font-semibold">Careers</a>
+                    <a href="#" onclick="navigate(event, 'contact')" class="text-gray-300 hover:text-gold transition-colors text-xs xl:text-sm uppercase tracking-wider font-semibold">Contact</a>
+                    <a href="#" onclick="navigate(event, 'booking')" class="text-gray-300 hover:text-gold transition-colors text-xs xl:text-sm uppercase tracking-wider font-semibold">Booking</a>
+                    
+                    <!-- Language Selector (Nuova Feature) -->
+                    <div class="relative group ml-2 mr-4 border-l border-white/20 pl-4">
+                        <button class="flex items-center text-gray-300 hover:text-white text-xs xl:text-sm font-bold uppercase tracking-wider focus:outline-none">
+                            <i class="fa-solid fa-globe mr-1 text-gold"></i> EN <i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i>
+                        </button>
+                        <!-- Dropdown Lingue -->
+                        <div class="absolute right-0 mt-4 w-32 bg-dark border border-white/10 rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 overflow-hidden">
+                            <a href="#" class="block px-4 py-3 text-sm text-gray-300 hover:text-darker hover:bg-gold transition-colors"><span class="mr-2">🇬🇧</span> English</a>
+                            <a href="#" class="block px-4 py-3 text-sm text-gray-300 hover:text-darker hover:bg-gold transition-colors"><span class="mr-2">🇦🇪</span> العربية</a>
+                            <a href="#" class="block px-4 py-3 text-sm text-gray-300 hover:text-darker hover:bg-gold transition-colors"><span class="mr-2">🇷🇺</span> Русский</a>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/971544688898" target="_blank" class="bg-blush text-darker px-6 py-2 rounded-full font-bold uppercase tracking-wider hover:bg-gold hover:text-white transition-all transform hover:scale-105 shadow-lg text-xs xl:text-sm">
                         Book Now
                     </a>
                 </div>
 
-                <!-- Mobile Menu Button (Hamburger) -->
-                <div class="md:hidden flex items-center">
+                <!-- Mobile Menu Button & Language (Hamburger) -->
+                <div class="lg:hidden flex items-center space-x-4">
+                    <div class="relative group">
+                        <button class="flex items-center text-gray-300 hover:text-white text-sm font-bold focus:outline-none">
+                            <i class="fa-solid fa-globe text-gold"></i>
+                        </button>
+                    </div>
                     <button onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white focus:outline-none">
                         <i class="fa-solid fa-bars text-3xl"></i>
                     </button>
@@ -99,13 +119,21 @@
             </div>
         </div>
 
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden bg-dark border-b border-white/10 absolute w-full">
+        <div id="mobile-menu" class="hidden lg:hidden bg-dark border-b border-white/10 absolute w-full max-h-[80vh] overflow-y-auto">
             <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col items-center">
+                <!-- Mobile Language Selector -->
+                <div class="flex justify-center space-x-4 mb-4 pb-4 border-b border-white/10 w-full pt-4">
+                    <a href="#" class="text-gold font-bold">EN</a>
+                    <span class="text-gray-600">|</span>
+                    <a href="#" class="text-gray-400 hover:text-white">AR</a>
+                    <span class="text-gray-600">|</span>
+                    <a href="#" class="text-gray-400 hover:text-white">RU</a>
+                </div>
+                
                 <a href="#" onclick="navigate(event, 'home')" class="block px-3 py-3 text-base uppercase tracking-widest font-semibold text-gray-300 hover:text-gold">Home</a>
                 <a href="#" onclick="navigate(event, 'services')" class="block px-3 py-3 text-base uppercase tracking-widest font-semibold text-gray-300 hover:text-gold">Services Menu</a>
                 <a href="#" onclick="navigate(event, 'about')" class="block px-3 py-3 text-base uppercase tracking-widest font-semibold text-gray-300 hover:text-gold">About Us & Team</a>
-                <a href="#" onclick="navigate(event, 'portfolio')" class="block px-3 py-3 text-base uppercase tracking-widest font-semibold text-gray-300 hover:text-gold">Our Work (Portfolio)</a>
+                <a href="#" onclick="navigate(event, 'portfolio')" class="block px-3 py-3 text-base uppercase tracking-widest font-semibold text-gray-300 hover:text-gold">Our Work</a>
                 <a href="#" onclick="navigate(event, 'careers')" class="block px-3 py-3 text-base uppercase tracking-widest font-semibold text-gray-300 hover:text-gold">Careers</a>
                 <a href="#" onclick="navigate(event, 'contact')" class="block px-3 py-3 text-base uppercase tracking-widest font-semibold text-gray-300 hover:text-gold">Contact & Map</a>
                 <a href="#" onclick="navigate(event, 'booking')" class="block px-3 py-3 text-base uppercase tracking-widest font-semibold text-gray-300 hover:text-gold">Booking Calendar</a>
@@ -118,19 +146,11 @@
 
     <main class="w-full">
         
-        <!-- ==========================================
-             PAGINA 1: HOME
-             ========================================== -->
         <div id="page-home" class="page-section block">
-            
             <section class="relative h-screen flex items-center justify-center overflow-hidden">
-                
                 <div id="hero-media-container">
-                    <!-- Immagine Statica Iniziale con link stabile -->
-                    <img id="hero-image" src="https://images.pexels.com/photos/3997989/pexels-photo-3997989.jpeg?auto=compress&cs=tinysrgb&w=2000" alt="Luxury Spa Background">
-                    
-                    <!-- Overlay Scuro -->
-                    <div class="absolute inset-0 bg-gradient-to-b from-darker/60 via-darker/40 to-darker z-10"></div>
+                    <img id="hero-image" src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2000" alt="Luxury Spa Background">
+                    <div class="absolute inset-0 bg-gradient-to-b from-darker/70 via-darker/50 to-darker z-10"></div>
                 </div>
                 
                 <div class="relative z-20 text-center px-4 max-w-4xl mx-auto mt-20">
@@ -152,42 +172,9 @@
                     </div>
                 </div>
             </section>
-
-            <!-- The 100 AED Offer Section -->
-            <section class="py-24 bg-dark">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="bg-darker border border-gold/20 rounded-3xl p-8 md:p-16 text-center relative overflow-hidden shadow-2xl">
-                        <!-- Decorative element -->
-                        <div class="absolute top-0 right-0 -mt-10 -mr-10 text-gold/5 w-64 h-64 border-[40px] border-gold/5 rounded-full"></div>
-                        <div class="absolute bottom-0 left-0 -mb-10 -ml-10 text-gold/5 w-40 h-40 border-[20px] border-gold/5 rounded-full"></div>
-                        
-                        <div class="relative z-10">
-                            <h2 class="font-serif text-4xl md:text-6xl font-bold mb-4 text-white">The <span class="text-gold italic">Signature</span> Package</h2>
-                            <p class="text-gray-400 uppercase tracking-widest mb-10 font-semibold">Limited Time Offer</p>
-                            
-                            <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-12">
-                                <div class="text-8xl md:text-9xl font-serif font-bold text-blush drop-shadow-lg">10</div>
-                                <div class="text-left">
-                                    <div class="text-3xl md:text-4xl font-serif text-white">Services</div>
-                                    <div class="text-2xl md:text-3xl font-light text-gold mt-2">Only 100 AED</div>
-                                </div>
-                            </div>
-                            
-                            <p class="text-gray-300 max-w-2xl mx-auto mb-10 text-lg">
-                                Our most requested package. Enjoy a full day of pampering with 10 premium services of your choice for an unbelievable price.
-                            </p>
-                            <a href="https://wa.me/971544688898" target="_blank" class="inline-block bg-gold text-darker px-10 py-4 rounded-full font-bold uppercase tracking-widest hover:bg-white transition-colors">
-                                Claim Offer Now
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <!-- Nota: La promo è stata spostata nel Popup Modale -->
         </div>
 
-        <!-- ==========================================
-             PAGINA 2: SERVICES MENU
-             ========================================== -->
         <div id="page-services" class="page-section hidden pt-20">
             <section class="py-24 bg-darker min-h-screen">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -199,7 +186,7 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
                         <!-- Category 1 -->
-                        <div class="bg-dark p-8 rounded-2xl border border-white/5 hover:border-gold/30 transition-colors">
+                        <div class="bg-dark p-8 rounded-2xl border border-white/5 hover:border-gold/30 transition-colors shadow-xl">
                             <div class="text-gold text-4xl mb-6"><i class="fa-solid fa-hot-tub-person"></i></div>
                             <h3 class="font-serif text-2xl font-bold mb-6 text-white border-b border-white/10 pb-4">Moroccan Bath & Spa</h3>
                             <ul class="space-y-4 text-gray-300">
@@ -211,7 +198,7 @@
                         </div>
 
                         <!-- Category 2 -->
-                        <div class="bg-dark p-8 rounded-2xl border border-white/5 hover:border-gold/30 transition-colors">
+                        <div class="bg-dark p-8 rounded-2xl border border-white/5 hover:border-gold/30 transition-colors shadow-xl">
                             <div class="text-gold text-4xl mb-6"><i class="fa-solid fa-scissors"></i></div>
                             <h3 class="font-serif text-2xl font-bold mb-6 text-white border-b border-white/10 pb-4">Hair Care & Styling</h3>
                             <ul class="space-y-4 text-gray-300">
@@ -224,7 +211,7 @@
                         </div>
 
                         <!-- Category 3 -->
-                        <div class="bg-dark p-8 rounded-2xl border border-white/5 hover:border-gold/30 transition-colors">
+                        <div class="bg-dark p-8 rounded-2xl border border-white/5 hover:border-gold/30 transition-colors shadow-xl">
                             <div class="text-gold text-4xl mb-6"><i class="fa-solid fa-spa"></i></div>
                             <h3 class="font-serif text-2xl font-bold mb-6 text-white border-b border-white/10 pb-4">Nails & Details</h3>
                             <ul class="space-y-4 text-gray-300">
@@ -239,9 +226,6 @@
             </section>
         </div>
 
-        <!-- ==========================================
-             PAGINA 3: ABOUT US & TEAM 
-             ========================================== -->
         <div id="page-about" class="page-section hidden pt-20">
             <section class="py-24 bg-dark min-h-screen">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -253,8 +237,7 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-24">
                         <div>
-                            <!-- Immagine About Us con link stabile -->
-                            <img src="https://images.pexels.com/photos/3993444/pexels-photo-3993444.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Our Salon Interior" class="rounded-3xl shadow-2xl border border-white/10">
+                            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1000&auto=format&fit=crop&q=80" alt="Our Salon Interior" class="rounded-3xl shadow-2xl border border-white/10">
                         </div>
                         <div>
                             <h3 class="font-serif text-3xl font-bold text-white mb-6">A Haven of Beauty in Deira</h3>
@@ -273,21 +256,21 @@
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
                         <!-- Team Member 1 -->
-                        <div class="bg-darker p-6 rounded-2xl border border-white/5 text-center">
+                        <div class="bg-darker p-6 rounded-2xl border border-white/5 text-center shadow-xl hover:-translate-y-2 transition-transform duration-300">
                             <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&auto=format&fit=crop&q=80" alt="Founder" class="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-gold/20 object-cover">
                             <h4 class="font-serif text-xl text-white font-bold mb-2">Pinky</h4>
                             <p class="text-gold uppercase text-sm tracking-wider mb-4">Founder & Lead Stylist</p>
                             <p class="text-gray-400 italic">"Beauty is power; a smile is its sword."</p>
                         </div>
                          <!-- Team Member 2 -->
-                        <div class="bg-darker p-6 rounded-2xl border border-white/5 text-center">
+                        <div class="bg-darker p-6 rounded-2xl border border-white/5 text-center shadow-xl hover:-translate-y-2 transition-transform duration-300">
                             <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=80" alt="Nail Tech" class="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-gold/20 object-cover">
                             <h4 class="font-serif text-xl text-white font-bold mb-2">Sarah</h4>
                             <p class="text-gold uppercase text-sm tracking-wider mb-4">Senior Nail Technician</p>
                              <p class="text-gray-400 italic">"Details make perfection."</p>
                         </div>
                          <!-- Team Member 3 -->
-                        <div class="bg-darker p-6 rounded-2xl border border-white/5 text-center">
+                        <div class="bg-darker p-6 rounded-2xl border border-white/5 text-center shadow-xl hover:-translate-y-2 transition-transform duration-300">
                             <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=500&auto=format&fit=crop&q=80" alt="Therapist" class="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-gold/20 object-cover">
                             <h4 class="font-serif text-xl text-white font-bold mb-2">Aisha</h4>
                             <p class="text-gold uppercase text-sm tracking-wider mb-4">Spa Therapist Expert</p>
@@ -298,9 +281,6 @@
             </section>
         </div>
 
-         <!-- ==========================================
-             PAGINA 4: OUR WORK (PORTFOLIO) (NUOVA)
-             ========================================== -->
         <div id="page-portfolio" class="page-section hidden pt-20">
             <section class="py-24 bg-darker min-h-screen">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -308,50 +288,51 @@
                         <p class="text-gold font-sans uppercase tracking-[0.2em] mb-4 text-sm font-semibold">Real Results</p>
                         <h2 class="font-serif text-4xl md:text-5xl font-bold text-white">Our Work Gallery</h2>
                         <div class="w-24 h-1 bg-blush mx-auto mt-6"></div>
-                         <p class="text-gray-400 mt-6 max-w-2xl mx-auto">(Immagini segnaposto per mostrare esempi del loro lavoro. Verranno sostituite con le loro foto reali.)</p>
+                         <!-- Traduzione Inglese -->
+                         <p class="text-gray-400 mt-6 max-w-2xl mx-auto italic">(Placeholder images to showcase work examples. These will be replaced with actual salon photos.)</p>
                     </div>
 
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
                         <!-- Portfolio Item 1 (Hair) -->
-                        <div class="relative group overflow-hidden rounded-2xl">
-                            <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&auto=format&fit=crop&q=80" alt="Hair Styling Example" class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="relative group overflow-hidden rounded-2xl aspect-square shadow-xl">
+                            <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&auto=format&fit=crop&q=80" alt="Hair Styling Example" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                             <div class="absolute inset-0 bg-darker/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                <p class="text-white font-serif text-xl font-bold">Hair Styling & Color</p>
+                                <p class="text-white font-serif text-xl font-bold text-center px-4">Hair Styling & Color</p>
                             </div>
                         </div>
                         <!-- Portfolio Item 2 (Nails) -->
-                        <div class="relative group overflow-hidden rounded-2xl">
-                            <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&auto=format&fit=crop&q=80" alt="Nail Art Example" class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="relative group overflow-hidden rounded-2xl aspect-square shadow-xl">
+                            <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&auto=format&fit=crop&q=80" alt="Nail Art Example" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                              <div class="absolute inset-0 bg-darker/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                <p class="text-white font-serif text-xl font-bold">Nail Art & Extensions</p>
+                                <p class="text-white font-serif text-xl font-bold text-center px-4">Nail Art & Extensions</p>
                             </div>
                         </div>
                         <!-- Portfolio Item 3 (Spa/Facial) -->
-                        <div class="relative group overflow-hidden rounded-2xl">
-                            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&auto=format&fit=crop&q=80" alt="Spa Treatment Example" class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="relative group overflow-hidden rounded-2xl aspect-square shadow-xl">
+                            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&auto=format&fit=crop&q=80" alt="Spa Treatment Example" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                              <div class="absolute inset-0 bg-darker/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                <p class="text-white font-serif text-xl font-bold">Spa & Facials</p>
+                                <p class="text-white font-serif text-xl font-bold text-center px-4">Spa & Facials</p>
                             </div>
                         </div>
-                        <!-- Portfolio Item 4 (Hair) -->
-                        <div class="relative group overflow-hidden rounded-2xl">
-                            <img src="https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?w=800&auto=format&fit=crop&q=80" alt="Hair Treatment Example" class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <!-- Portfolio Item 4 (Hair Treatments) -->
+                        <div class="relative group overflow-hidden rounded-2xl aspect-square shadow-xl">
+                            <img src="https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?w=800&auto=format&fit=crop&q=80" alt="Hair Treatment Example" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                              <div class="absolute inset-0 bg-darker/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                <p class="text-white font-serif text-xl font-bold">Hair Treatments</p>
+                                <p class="text-white font-serif text-xl font-bold text-center px-4">Hair Treatments</p>
                             </div>
                         </div>
-                         <!-- Portfolio Item 5 (Nails) -->
-                        <div class="relative group overflow-hidden rounded-2xl">
-                            <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=800&auto=format&fit=crop&q=80" alt="Pedicure Example" class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                         <!-- Portfolio Item 5 (Pedicure) -->
+                        <div class="relative group overflow-hidden rounded-2xl aspect-square shadow-xl">
+                            <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=800&auto=format&fit=crop&q=80" alt="Pedicure Example" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                              <div class="absolute inset-0 bg-darker/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                <p class="text-white font-serif text-xl font-bold">Pedicure & Foot Spa</p>
+                                <p class="text-white font-serif text-xl font-bold text-center px-4">Pedicure & Foot Spa</p>
                             </div>
                         </div>
-                         <!-- Portfolio Item 6 (Makeup/Lashes) -->
-                        <div class="relative group overflow-hidden rounded-2xl">
-                            <img src="https://images.unsplash.com/photo-1596436909076-1c9345a55046?w=800&auto=format&fit=crop&q=80" alt="Lashes & Brows Example" class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                         <!-- Portfolio Item 6 (Lashes) -->
+                        <div class="relative group overflow-hidden rounded-2xl aspect-square shadow-xl">
+                            <img src="https://images.unsplash.com/photo-1596436909076-1c9345a55046?w=800&auto=format&fit=crop&q=80" alt="Lashes & Brows Example" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                              <div class="absolute inset-0 bg-darker/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                <p class="text-white font-serif text-xl font-bold">Lashes & Brows</p>
+                                <p class="text-white font-serif text-xl font-bold text-center px-4">Lashes & Brows</p>
                             </div>
                         </div>
                     </div>
@@ -359,16 +340,6 @@
             </section>
         </div>
 
-        <!-- ==========================================
-             PAGINA 5: CAREERS
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- ==========================================
-             PAGINA 5: CAREERS (Con Formulario Google)
-             ========================================== -->
         <div id="page-careers" class="page-section hidden pt-20">
             <section class="py-24 bg-blush text-darker relative min-h-screen flex items-center">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -389,20 +360,17 @@
                                 <li><i class="fa-solid fa-check text-darker mr-2"></i> Great Benefits</li>
                             </ul>
                             
-                            <!-- Bottone con Link Diretto al tuo Google Form -->
+                            <!-- Link Google Forms Corretto -->
                             <a href="https://forms.gle/G6HVBowuq9QrfpAQA" target="_blank" class="inline-block bg-darker text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-dark transition-colors shadow-xl">
                                 Apply Now
                             </a>
-                            <p class="mt-3 text-xs opacity-70 italic">*Takes 2 minutes via our quick form. Close the new tab when finished to return here.</p>
+                            <p class="mt-3 text-xs opacity-70 italic">*Takes 2 minutes via our quick form.</p>
                         </div>
                     </div>
                 </div>
             </section>
         </div>
 
-        <!-- ==========================================
-             PAGINA 6: CONTACT
-             ========================================== -->
         <div id="page-contact" class="page-section hidden pt-20">
             <section class="bg-dark py-24 min-h-screen">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -413,7 +381,7 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
                         <!-- Location -->
-                        <div class="bg-darker p-8 rounded-2xl border border-white/5 text-center">
+                        <div class="bg-darker p-8 rounded-2xl border border-white/5 text-center shadow-xl">
                             <i class="fa-solid fa-location-dot text-4xl text-blush mb-6"></i>
                             <h4 class="font-serif text-2xl text-gold mb-4">Location</h4>
                             <p class="text-gray-300 leading-relaxed mb-6">
@@ -421,11 +389,12 @@
                                 Deira, Dubai<br>
                                 United Arab Emirates
                             </p>
+                            <!-- Link Maps -->
                             <a href="https://www.google.com/maps/search/?api=1&query=Lotus+Grand+Hotel,+Deira,+Dubai" target="_blank" class="text-blush hover:text-white transition-colors underline text-sm uppercase tracking-wider">Get Directions</a>
                         </div>
                         
                         <!-- Hours -->
-                        <div class="bg-darker p-8 rounded-2xl border border-white/5 text-center">
+                        <div class="bg-darker p-8 rounded-2xl border border-white/5 text-center shadow-xl">
                             <i class="fa-regular fa-clock text-4xl text-blush mb-6"></i>
                             <h4 class="font-serif text-2xl text-gold mb-4">Opening Hours</h4>
                             <ul class="space-y-3 text-gray-300">
@@ -435,7 +404,7 @@
                         </div>
 
                         <!-- Contact -->
-                        <div class="bg-darker p-8 rounded-2xl border border-white/5 text-center">
+                        <div class="bg-darker p-8 rounded-2xl border border-white/5 text-center shadow-xl">
                             <i class="fa-brands fa-whatsapp text-4xl text-blush mb-6"></i>
                             <h4 class="font-serif text-2xl text-gold mb-4">Bookings</h4>
                             <p class="text-gray-300 mb-6">Chat with our reception to secure your appointment.</p>
@@ -448,9 +417,6 @@
             </section>
         </div>
         
-        <!-- ==========================================
-             PAGINA 7: BOOKING CALENDAR (Demo Visivo)
-             ========================================== -->
         <div id="page-booking" class="page-section hidden pt-20">
             <section class="bg-darker py-24 min-h-screen">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -458,13 +424,12 @@
                         <p class="text-gold font-sans uppercase tracking-[0.2em] mb-4 text-sm font-semibold">Plan Your Visit</p>
                         <h2 class="font-serif text-4xl md:text-5xl font-bold text-white">Check Availability</h2>
                         <div class="w-24 h-1 bg-blush mx-auto mt-6"></div>
-                        <p class="text-gray-400 mt-6 max-w-2xl mx-auto">(This is a visual demo. It will be connected to your real booking system.)</p>
+                        <p class="text-gray-400 mt-6 max-w-2xl mx-auto">(Visual Demo Calendar. To be connected to your actual booking system.)</p>
                     </div>
 
-                    <!-- IL CALENDARIO FINTO -->
+                    <!-- IL CALENDARIO FINTO COSTRUITO DA ZERO -->
                     <div class="bg-white rounded-3xl overflow-hidden shadow-2xl mx-auto max-w-4xl border-4 border-dark flex flex-col md:flex-row">
-                        
-                        <!-- Colonna 1: I Giorni (Date) -->
+                        <!-- Colonna 1: I Giorni -->
                         <div class="w-full md:w-1/2 p-8 md:p-10 bg-gray-50">
                             <h3 class="text-2xl font-serif font-bold text-darker mb-8 text-center md:text-left">Select Date</h3>
                             <div class="grid grid-cols-7 gap-3 text-center mb-4">
@@ -495,7 +460,7 @@
                             </div>
                         </div>
                         
-                        <!-- Colonna 2: Gli Orari (Times) -->
+                        <!-- Colonna 2: Gli Orari -->
                         <div class="w-full md:w-1/2 p-8 md:p-10 bg-white border-t md:border-t-0 md:border-l border-gray-200 flex flex-col justify-between">
                             <div>
                                 <h3 class="text-2xl font-serif font-bold text-darker mb-8 text-center md:text-left">Available Times</h3>
@@ -525,6 +490,41 @@
         </div>
     </main>
 
+    <!-- NUOVO: Promo Popup Modal -->
+    <div id="promo-popup" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm opacity-0 transition-opacity duration-500 px-4">
+        <div class="bg-darker border border-gold/30 rounded-3xl p-8 md:p-12 text-center relative overflow-hidden shadow-[0_0_50px_rgba(197,160,89,0.3)] max-w-2xl w-full transform scale-95 transition-transform duration-500" id="promo-content">
+            <!-- Close Button -->
+            <button onclick="closePromoPopup()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors z-20 focus:outline-none">
+                <i class="fa-solid fa-xmark text-3xl"></i>
+            </button>
+            
+            <!-- Decorative elements -->
+            <div class="absolute top-0 right-0 -mt-10 -mr-10 text-gold/5 w-48 h-48 border-[30px] border-gold/5 rounded-full z-0 pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 -mb-10 -ml-10 text-gold/5 w-32 h-32 border-[15px] border-gold/5 rounded-full z-0 pointer-events-none"></div>
+            
+            <div class="relative z-10">
+                <h2 class="font-serif text-4xl md:text-5xl font-bold mb-3 text-white">The <span class="text-gold italic">Signature</span> Package</h2>
+                <p class="text-gray-400 uppercase tracking-widest mb-8 font-semibold text-sm">Limited Time Offer</p>
+                
+                <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-8">
+                    <div class="text-8xl md:text-9xl font-serif font-bold text-blush drop-shadow-lg leading-none">10</div>
+                    <div class="text-left">
+                        <div class="text-3xl md:text-4xl font-serif text-white">Services</div>
+                        <div class="text-2xl md:text-3xl font-light text-gold mt-1">Only 100 AED</div>
+                    </div>
+                </div>
+                
+                <p class="text-gray-300 max-w-md mx-auto mb-10 text-lg">
+                    Our most requested package. Enjoy a full day of pampering with 10 premium services of your choice.
+                </p>
+                <a href="https://wa.me/971544688898" target="_blank" onclick="closePromoPopup()" class="inline-block w-full sm:w-auto bg-gold text-darker px-10 py-4 rounded-full font-bold uppercase tracking-widest hover:bg-white transition-colors shadow-lg">
+                    Claim Offer Now
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
     <footer class="bg-darker py-8 border-t border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
@@ -539,7 +539,9 @@
         </div>
     </footer>
 
+    <!-- JavaScript -->
     <script>
+        // Gestione della navigazione tra le pagine
         function navigate(event, pageId) {
             event.preventDefault();
             
@@ -550,19 +552,16 @@
             });
             
             const targetPage = document.getElementById('page-' + pageId);
-            if (targetPage) {
-                targetPage.classList.remove('hidden');
-                targetPage.classList.add('block');
-            }
+            targetPage.classList.remove('hidden');
+            targetPage.classList.add('block');
             
             const menu = document.getElementById('mobile-menu');
-            if (menu) {
-                menu.classList.add('hidden');
-            }
+            menu.classList.add('hidden');
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        // Menù Mobile (Hamburger)
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             if (menu.classList.contains('hidden')) {
@@ -572,6 +571,7 @@
             }
         }
 
+        // Effetto scorrimento della Navbar
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
@@ -582,6 +582,43 @@
                 navbar.classList.remove('bg-darker/95', 'shadow-lg');
             }
         });
+
+        // Trigger del Popup Promozionale all'apertura del sito
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                const popup = document.getElementById('promo-popup');
+                const content = document.getElementById('promo-content');
+                
+                popup.classList.remove('hidden');
+                popup.classList.add('flex');
+                
+                // Forza il browser a registrare il cambiamento prima di animare
+                void popup.offsetWidth; 
+                
+                popup.classList.remove('opacity-0');
+                popup.classList.add('opacity-100');
+                
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }, 1500); // Appare dopo 1.5 secondi
+        });
+
+        // Funzione per chiudere il Popup
+        function closePromoPopup() {
+            const popup = document.getElementById('promo-popup');
+            const content = document.getElementById('promo-content');
+            
+            popup.classList.remove('opacity-100');
+            popup.classList.add('opacity-0');
+            
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+            
+            setTimeout(() => {
+                popup.classList.add('hidden');
+                popup.classList.remove('flex');
+            }, 500); // Attende la fine dell'animazione (0.5 secondi)
+        }
     </script>
 </body>
 </html>
